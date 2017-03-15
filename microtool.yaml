@@ -1,12 +1,12 @@
 ---
 name: "WebCommit"
-version: "1.0.1"
+version: "1.0.2"
 description: "Webcommit Microtool"
 avatar: "https://placehold.it/50/123456"
 author: "Lijian"
 repoLink: "https://github.com/lijian186/git-novnc.git"
 image:
- imageName: "idea-mt-webcommit"
+ imageName: "idea-mt-gitwebcommit"
  tag: "latest"
  httpPorts: ["8080"]
  registry:
