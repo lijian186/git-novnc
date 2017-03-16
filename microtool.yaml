@@ -6,11 +6,11 @@ avatar: "https://placehold.it/50/123456"
 author: "Lijian"
 repoLink: "https://github.com/lijian186/git-novnc.git"
 image:
- imageName: "idea-mt-gitwebcommit"
- tag: "latest"
- httpPorts: ["8080"]
- registry:
-  url: "docker-registry.xlab.si"
-  username: "huawei"
-  password: "shenzen"
+  registry:
+    url: "docker-registry.xlab.si"
+    username: "huawei"
+    password: "shenzen"
+  imageName: "idea-mt-gitwebcommit"
+  tag: "latest"
+httpPorts: ["8080"]
 categories: ["testers"]
