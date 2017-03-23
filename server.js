@@ -10,6 +10,7 @@ const USERNAME_KEY = 'ownerId';
 const EMAIL_KEY = 'email';
 const UPDATE_SSH_ACTION = 'update_ssh';
 const UPDATE_EMAIL_ACTION = 'update_email';
+const AUTH_KEYS_ROOT = '/root/.ssh/'
 const AUTH_KEYS_PATH = '/root/.ssh/authorized_keys';
 
 var webcommit = {
@@ -115,6 +116,9 @@ function setGitIdentity(context) {
 }
 
 function buildAuthKeys(context) {
+    if(!fs.existsSync(AUTH_KEYS_ROOT)){
+        fs.mkdirSync(AUTH_KEYS_ROOT);
+    }
     return new Promise(function (resolve, reject) {
         var keys = '';
         context.keys.forEach(function (key) {

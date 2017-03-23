@@ -1,5 +1,4 @@
 FROM yuzhenpin/docker-novnc-xterm
-RUN mkdir -p ~/.ssh
 RUN apk update && apk add --no-cache git nodejs openssh
 RUN echo "Port 22" >> /etc/ssh/sshd_config
 ADD . /service
