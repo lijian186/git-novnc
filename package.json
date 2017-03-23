@@ -1,0 +1,15 @@
+{
+  "name": "mt-webcommit",
+  "version": "1.0.0",
+  "description": "Microtool webcommit",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Roozbeh Farahbod",
+  "license": "ISC",
+  "dependencies": {
+    "bluebird": "^3.4.1",
+    "microtools": "git+ssh://git@gitlab-xhproject.xlab.si:16022/IDEA/lib-node-microtools.git#develop"
+  }
+}

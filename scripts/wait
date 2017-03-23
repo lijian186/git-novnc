@@ -1,0 +1,40 @@
+#!/bin/bash
+
+#
+# Wait Script for IDEA Services that listen on a port
+# version 1.0.1
+#
+# Please DO NOT CHANGE this file outside of its reference repository.
+# This file may be automatically replaced.
+# The reference version of this file is in the following repository:
+#
+#   https://gitlab-xhproject.xlab.si/IDEA/res-dev-common/services/core
+#
+# Any change should be submitted to the above repository.
+#
+
+read ID
+
+echo $ID
+
+# Retrieve container IP address
+IP=""
+while [[ ! $IP =~ .+ ]]; do
+    IP=$(docker inspect --format '{{ .NetworkSettings.IPAddress }}' $ID)
+done
+
+# Wait for container service
+for port in $@; do
+    exec 2>/dev/null
+    echo -n "Waiting for service port $port on ip: $IP..."
+
+    until `exec 3<>/dev/tcp/$IP/$port`; do
+        sleep 1; echo -n ".";
+    done
+
+    exec 2>&2
+    echo ""
+done
+
+exec 3>&-
+exec 3<&-

@@ -1,0 +1,13 @@
+{
+  "log": {
+    "level": "debug"
+  },
+  "nikka": {
+    "url": "nikka.service.consul",
+    "user": "guest",
+    "pass": "guest"
+  },
+  "springbank": {
+    "url": "springbank.service.consul"
+  }
+}

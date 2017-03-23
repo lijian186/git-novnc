@@ -1,0 +1,46 @@
+#!/bin/bash
+
+#
+# Wait Script for IDEA Core Services
+# version 1.0.0
+#
+# Please DO NOT CHANGE this file outside of its reference repository.
+# This file may be automatically replaced.
+# The reference version of this file is in the following repository:
+#
+#   https://gitlab-xhproject.xlab.si/IDEA/res-dev-common/services/core
+#
+# Any change should be submitted to the above repository.
+#
+
+if [ -z "$1" ]
+then
+  read ID
+else
+  ID=$(docker ps -aq --filter name="$1")
+fi
+
+if [ -z "$ID" ]
+then
+  echo "Error: container id or name is missing"
+  echo "Usage:"
+  echo "  1) waitcore <service_name>"
+  echo "  or"
+  echo "  2) echo <container_id> | waitcore"
+  exit 1
+fi
+
+# Retrieve container name
+NAME=""
+while [ -z "$NAME" ]; do
+    NAME=$(docker inspect --format '{{ .Name }}' $ID)
+done
+
+# Wait for container service
+echo -n "Waiting for service '${NAME##/}'..."
+
+until docker logs $ID | grep -iq "is ready" ; do
+    sleep 1; echo -n ".";
+done
+
+echo " done."
